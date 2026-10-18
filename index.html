@@ -58,7 +58,6 @@
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(8px);
         }
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -69,25 +68,18 @@
             background: #c5a059;
             border-radius: 3px;
         }
-        @keyframes pulse-slow {
-            0%, 100% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.05); opacity: 1; }
-        }
-        .animate-pulse-slow {
-            animation: pulse-slow 3s infinite ease-in-out;
-        }
     </style>
 </head>
-<body class="relative min-h-screen">
+<body class="relative min-h-screen pb-20 sm:pb-0">
 
-    <!-- 音樂控制與提示區 -->
+    <!-- 音樂控制按鈕 -->
     <div class="fixed top-4 right-4 z-50 flex items-center gap-2">
         <button id="musicToggleBtn" class="bg-glass p-3 rounded-full shadow-lg border border-gold-300 text-gold-700 hover:text-gold-500 hover:scale-105 transition duration-300 flex items-center justify-center w-12 h-12">
-            <i id="musicIcon" class="fas fa-music text-lg animate-spin-slow"></i>
+            <i id="musicIcon" class="fas fa-music text-lg"></i>
         </button>
     </div>
 
-    <!-- 自動播放提示 Modal (針對瀏覽器阻擋自動播放機制) -->
+    <!-- 自動播放提示 Modal -->
     <div id="audioStartOverlay" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-500">
         <div class="bg-white max-w-sm w-full rounded-2xl p-6 text-center shadow-2xl border border-gold-300">
             <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-4 text-gold-600">
@@ -95,45 +87,44 @@
             </div>
             <h3 class="font-cormorant text-2xl font-bold text-gold-700 mb-2">Edwin & Grace</h3>
             <p class="text-sm text-gray-600 mb-6">邀請您開啟音樂，一同分享我們的幸福喜悅 🎵</p>
-            <button id="startAudioBtn" class="w-full bg-gold-600 hover:bg-gold-700 text-white py-3 rounded-xl font-medium tracking-widest shadow-md hover:shadow-lg transition">
+            <button id="startAudioBtn" class="w-full bg-gold-600 hover:bg-gold-700 text-white py-3 rounded-xl font-medium tracking-widest shadow-md transition">
                 開啟喜帖 & 播放音樂
             </button>
         </div>
     </div>
 
-    <!-- 導覽列 -->
+    <!-- 導覽列 (已移除小遊戲選項) -->
     <nav class="fixed bottom-0 sm:top-0 sm:bottom-auto left-0 w-full bg-glass border-t sm:border-b border-gold-200 z-40 py-2 sm:py-3 shadow-md">
         <div class="max-w-4xl mx-auto px-4 flex justify-around items-center text-xs sm:text-sm font-medium text-warmdark">
-            <a href="#hero" class="hover:text-gold-600 py-1 transition flex flex-col sm:flex-row items-center gap-1"><i class="fas fa-home text-base sm:text-sm"></i><span>首頁</span></a>
-            <a href="#story" class="hover:text-gold-600 py-1 transition flex flex-col sm:flex-row items-center gap-1"><i class="fas fa-heart text-base sm:text-sm"></i><span>故事</span></a>
-            <a href="#gallery" class="hover:text-gold-600 py-1 transition flex flex-col sm:flex-row items-center gap-1"><i class="fas fa-images text-base sm:text-sm"></i><span>相簿</span></a>
-            <a href="#info" class="hover:text-gold-600 py-1 transition flex flex-col sm:flex-row items-center gap-1"><i class="fas fa-map-marker-alt text-base sm:text-sm"></i><span>資訊</span></a>
-            <a href="#game" class="hover:text-gold-600 py-1 transition flex flex-col sm:flex-row items-center gap-1"><i class="fas fa-gamepad text-base sm:text-sm"></i><span>小遊戲</span></a>
-            <a href="#rsvp" class="hover:text-gold-600 py-1 transition flex flex-col sm:flex-row items-center gap-1"><i class="fas fa-paper-plane text-base sm:text-sm"></i><span>回覆</span></a>
+            <a href="#hero" class="hover:text-gold-600 py-1 transition flex flex-col sm:flex-row items-center gap-1"><i class="fas fa-home"></i><span>首頁</span></a>
+            <a href="#story" class="hover:text-gold-600 py-1 transition flex flex-col sm:flex-row items-center gap-1"><i class="fas fa-heart"></i><span>故事</span></a>
+            <a href="#gallery" class="hover:text-gold-600 py-1 transition flex flex-col sm:flex-row items-center gap-1"><i class="fas fa-images"></i><span>相簿</span></a>
+            <a href="#info" class="hover:text-gold-600 py-1 transition flex flex-col sm:flex-row items-center gap-1"><i class="fas fa-map-marker-alt"></i><span>資訊</span></a>
+            <a href="#rsvp" class="hover:text-gold-600 py-1 transition flex flex-col sm:flex-row items-center gap-1"><i class="fas fa-paper-plane"></i><span>回覆</span></a>
         </div>
     </nav>
 
-    <!-- 主標題區 (Hero Section) -->
+    <!-- 首頁 / 主標題區 -->
     <section id="hero" class="min-h-screen pt-12 pb-20 flex flex-col items-center justify-center relative px-4 text-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blush-50 via-gold-50 to-blush-100">
         <div class="max-w-2xl mx-auto space-y-6">
             <p class="font-cormorant text-xl tracking-widest text-gold-600 uppercase">Save The Date</p>
             <h1 class="font-cormorant text-5xl sm:text-7xl font-light text-warmdark tracking-wide">
                 Edwin <span class="text-gold-500 font-serif">&amp;</span> Grace
             </h1>
-            <p class="text-sm sm:text-base text-gray-500 tracking-widest">2026 . 11 . 14</p>
+            <p class="text-sm sm:text-base text-gray-500 tracking-widest">2026 . 11 . 14[cite: 1, 5]</p>
             
-            <!-- 主視覺相片 (卡片風格) -->
-            <div class="relative max-w-sm mx-auto my-6 p-3 bg-white rounded-2xl shadow-xl border border-gold-200 transform hover:scale-[1.02] transition duration-500 cursor-pointer overflow-hidden group" onclick="openLightbox(0)">
-                <img id="heroImage" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='500' viewBox='0 0 400 500'><rect width='400' height='500' fill='%23f5f0db'/><text x='50%' y='45%' font-family='sans-serif' font-size='20' fill='%23b08843' text-anchor='middle'>Edwin %26 Grace</text><text x='50%' y='55%' font-family='sans-serif' font-size='14' fill='%238e6930' text-anchor='middle'>點擊放大婚紗照</text></svg>" alt="Edwin & Grace" class="w-full h-[380px] object-cover rounded-xl shadow-inner">
-                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white gap-2 font-light">
+            <!-- 主視覺相片 (點擊放大) -->
+            <div class="relative max-w-sm mx-auto my-6 p-3 bg-white rounded-2xl shadow-xl border border-gold-200 cursor-pointer group" onclick="openLightbox(0)">
+                <img id="heroImage" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Edwin & Grace" class="w-full h-[380px] object-cover rounded-xl shadow-inner">
+                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white gap-2 rounded-xl">
                     <i class="fas fa-search-plus"></i> 點擊查看大圖
                 </div>
             </div>
 
             <blockquote class="text-warmdark text-lg sm:text-xl font-light italic px-4 py-2 border-l-2 border-r-2 border-gold-400 max-w-lg mx-auto">
-                「當收到這封喜帖的時候，我們的婚禮已經開始倒數啦！」
+                「當收到這封喜帖的時候，我們的婚禮已經開始倒數啦[cite: 2]！」
             </blockquote>
-            <p class="text-sm text-gold-700 font-medium tracking-widest uppercase">You're Invited!</p>
+            <p class="text-sm text-gold-700 font-medium tracking-widest uppercase">You're Invited![cite: 2]</p>
         </div>
 
         <!-- 倒數計時器 -->
@@ -160,73 +151,71 @@
         </div>
     </section>
 
-    <!-- 愛情故事區 (Our Love Story) -->
+    <!-- 愛情故事區 -->
     <section id="story" class="py-20 px-4 bg-white">
         <div class="max-w-3xl mx-auto text-center space-y-8">
             <div class="space-y-2">
-                <h2 class="font-cormorant text-4xl sm:text-5xl text-gold-600 italic">Our Love Story</h2>
+                <h2 class="font-cormorant text-4xl sm:text-5xl text-gold-600 italic">Our Love Story[cite: 3]</h2>
                 <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
             </div>
 
             <div class="p-8 bg-blush-50 rounded-3xl border border-blush-200 shadow-sm space-y-6 text-warmdark leading-relaxed">
-                <p class="text-xl sm:text-2xl font-medium text-gold-700">Guess what? We're getting married!</p>
-                <p class="text-lg sm:text-xl text-warmdark font-semibold">欸! 我們要結婚啦!</p>
+                <p class="text-xl sm:text-2xl font-medium text-gold-700">Guess what? We're getting married![cite: 3]</p>
+                <p class="text-lg sm:text-xl text-warmdark font-semibold">欸! 我們要結婚啦![cite: 3]</p>
                 <div class="text-sm sm:text-base space-y-2 text-gray-700">
-                    <p>Yep, we're the two people who eat together, argue together,</p>
-                    <p>and somehow still choose each other.</p>
-                    <p class="pt-2 text-warmdark font-medium">沒錯！就是那個每天一起吃飯、耍廢、吵架，最後還是選擇彼此的兩個人。</p>
+                    <p>Yep, we're the two people who eat together, argue together,[cite: 3]</p>
+                    <p>and somehow still choose each other.[cite: 3]</p>
+                    <p class="pt-2 text-warmdark font-medium">沒錯，就是那個每天一起吃飯、耍廢、吵架，最後還是選擇彼此的兩個人[cite: 3]。</p>
                 </div>
                 <hr class="border-gold-200 my-4 max-w-xs mx-auto">
                 <div class="text-sm sm:text-base space-y-2 text-gray-700">
-                    <p>So please come hungry, come thirsty,</p>
-                    <p>and most importantly, <strong>come ready to PARTY!</strong></p>
-                    <p class="pt-2 text-warmdark font-medium">所以這一天，請務必來吃好、喝好、玩好！</p>
+                    <p>So please come hungry, come thirsty,[cite: 3]</p>
+                    <p>and most importantly, <strong>come ready to PARTY![cite: 3]</strong></p>
+                    <p class="pt-2 text-warmdark font-medium">所以這一天，請務必來吃好、喝好、玩好！[cite: 3]</p>
                 </div>
                 <blockquote class="bg-white p-4 rounded-xl border-l-4 border-gold-500 text-xs sm:text-sm text-gray-600 italic mt-4">
-                    「新娘不逃婚，新郎也還來得及反悔 😜」
+                    「新娘不逃婚，新郎也還來得及反悔 😜[cite: 3]」
                 </blockquote>
             </div>
 
-            <!-- 新郎與新娘介紹卡片 -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6">
                 <div class="p-6 bg-gold-50 rounded-2xl border border-gold-200 flex flex-col items-center">
-                    <span class="text-xs font-bold text-gold-600 uppercase tracking-widest mb-1">Groom 新郎</span>
-                    <h4 class="font-cormorant text-3xl font-semibold text-warmdark">Edwin</h4>
-                    <p class="text-sm text-gray-600 mt-2">溫柔體貼、最佳幽默擔當與專屬大廚</p>
+                    <span class="text-xs font-bold text-gold-600 uppercase tracking-widest mb-1">Groom 新郎[cite: 3]</span>
+                    <h4 class="font-cormorant text-3xl font-semibold text-warmdark">Edwin[cite: 3]</h4>
+                    <p class="text-sm text-gray-600 mt-2">溫柔體貼、最佳幽默擔當</p>
                 </div>
                 <div class="p-6 bg-blush-50 rounded-2xl border border-blush-200 flex flex-col items-center">
-                    <span class="text-xs font-bold text-blush-500 uppercase tracking-widest mb-1">Bride 新娘</span>
-                    <h4 class="font-cormorant text-3xl font-semibold text-warmdark">Grace (奇奇)</h4>
+                    <span class="text-xs font-bold text-blush-500 uppercase tracking-widest mb-1">Bride 新娘[cite: 3]</span>
+                    <h4 class="font-cormorant text-3xl font-semibold text-warmdark">奇奇 (Grace)[cite: 3]</h4>
                     <p class="text-sm text-gray-600 mt-2">甜美可愛、充滿陽光笑容的可愛女主角</p>
                 </div>
             </div>
 
             <p class="text-sm sm:text-base text-gray-600 italic pt-4">
-                「走過風雨、經歷歲月，我們的愛情依舊堅定而溫暖，為彼此的人生增添無盡的幸福。」
+                「走過風雨、經歷歲月，我們的愛情依舊堅定而溫暖，為彼此的人生增添無盡的幸福。Welcome to our wedding[cite: 4]」
             </p>
         </div>
     </section>
 
-    <!-- 照片輪播與藝廊區 (Gallery & Carousel) -->
+    <!-- 照片輪播與燈箱區 -->
     <section id="gallery" class="py-20 px-4 bg-gold-50/50">
         <div class="max-w-4xl mx-auto space-y-8 text-center">
             <div class="space-y-2">
                 <h2 class="font-cormorant text-4xl sm:text-5xl text-gold-600 italic">Sweet Moments</h2>
-                <p class="text-xs sm:text-sm text-gray-500 tracking-widest">婚紗寫真相簿 (點擊可放大檢視)</p>
+                <p class="text-xs sm:text-sm text-gray-500 tracking-widest">婚紗寫真相簿 (點擊圖片可放大檢視)</p>
             </div>
 
-            <!-- 主輪播元件 -->
             <div class="relative bg-white p-4 rounded-3xl shadow-xl border border-gold-200 max-w-2xl mx-auto">
-                <div class="relative h-[350px] sm:h-[450px] overflow-hidden rounded-2xl">
-                    <img id="carouselImg" src="" alt="Gallery Image" class="w-full h-full object-cover transition-all duration-500 cursor-pointer" onclick="openLightboxCurrent()">
-                    
-                    <!-- 輪播文字蓋層 -->
+                <div class="relative h-[350px] sm:h-[450px] overflow-hidden rounded-2xl cursor-pointer group" onclick="openLightboxCurrent()">
+                    <img id="carouselImg" src="" alt="Gallery Image" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white gap-2">
+                        <i class="fas fa-search-plus"></i> 點擊放大檢視
+                    </div>
                     <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent p-6 text-white text-left">
                         <p id="carouselCaption" class="text-sm sm:text-base font-light">Edwin & Grace</p>
                     </div>
                 </div>
 
-                <!-- 輪播控制按鈕 -->
                 <button onclick="prevSlide()" class="absolute left-6 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-warmdark p-3 rounded-full shadow-md transition hover:scale-110">
                     <i class="fas fa-chevron-left"></i>
                 </button>
@@ -234,49 +223,44 @@
                     <i class="fas fa-chevron-right"></i>
                 </button>
 
-                <!-- 輪播指示點 -->
                 <div id="carouselDots" class="flex justify-center gap-2 mt-4"></div>
             </div>
         </div>
     </section>
 
-    <!-- 婚禮時間與地點資訊 (Venue & Time) -->
+    <!-- 婚禮時間與地點資訊 -->
     <section id="info" class="py-20 px-4 bg-white">
         <div class="max-w-4xl mx-auto space-y-10 text-center">
             <div class="space-y-2">
                 <h2 class="font-cormorant text-4xl sm:text-5xl text-gold-600">Wedding Information</h2>
-                <p class="text-xs sm:text-sm text-gray-500 tracking-widest">婚禮時間與地點</p>
+                <p class="text-xs sm:text-sm text-gray-500 tracking-widest">婚禮時間與地點[cite: 5]</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-                <!-- 時間資訊 -->
                 <div class="p-8 bg-gold-50 rounded-3xl border border-gold-200 flex flex-col justify-between shadow-sm">
                     <div class="space-y-4">
                         <div class="w-12 h-12 bg-gold-100 rounded-full flex items-center justify-center mx-auto text-gold-600 text-xl">
                             <i class="far fa-calendar-alt"></i>
                         </div>
-                        <h3 class="font-cormorant text-2xl font-bold text-warmdark">Time / 婚禮時間</h3>
-                        <p class="text-2xl font-bold text-gold-600">2026 年 11 月 14 日 (星期六)</p>
+                        <h3 class="font-cormorant text-2xl font-bold text-warmdark">Time / 婚禮時間[cite: 5]</h3>
+                        <p class="text-2xl font-bold text-gold-600">2026 年 11 月 14 日[cite: 1, 5]</p>
                         <div class="inline-block bg-white px-6 py-3 rounded-xl border border-gold-200 text-sm space-y-1">
-                            <p class="text-warmdark font-medium">18:00 恭候入席</p>
-                            <p class="text-gold-700 font-medium">18:30 準時開席</p>
+                            <p class="text-warmdark font-medium">18:00 恭候入席[cite: 5]</p>
+                            <p class="text-gold-700 font-medium">18:30 準時開席[cite: 5]</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 地點資訊 -->
                 <div class="p-8 bg-blush-50 rounded-3xl border border-blush-200 flex flex-col justify-between shadow-sm">
                     <div class="space-y-4">
                         <div class="w-12 h-12 bg-blush-200 rounded-full flex items-center justify-center mx-auto text-blush-500 text-xl">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <h3 class="font-cormorant text-2xl font-bold text-warmdark">Address / 婚禮地點</h3>
-                        <p class="text-lg font-bold text-warmdark">福容大飯店 桃園機場捷運A8店</p>
-                        <p class="text-sm text-gray-600">桃園市龜山區文化里復興一路2號3樓</p>
-                        <p class="text-xs text-gray-500">Fullon Hotel Taoyuan Airport Access MRT A8</p>
+                        <h3 class="font-cormorant text-2xl font-bold text-warmdark">Address / 婚禮地點[cite: 5]</h3>
+                        <p class="text-lg font-bold text-warmdark">福容大飯店 桃園機場捷運A8店[cite: 5]</p>
+                        <p class="text-sm text-gray-600">桃園市龜山區文化里復興一路2號3樓[cite: 5]</p>
                     </div>
 
-                    <!-- 地圖連結按鈕 -->
                     <div class="pt-6">
                         <a href="https://maps.google.com/?q=桃園市龜山區復興一路2號3樓" target="_blank" class="inline-flex items-center gap-2 bg-gold-600 hover:bg-gold-700 text-white px-6 py-3 rounded-xl text-sm font-medium transition shadow-md">
                             <i class="fas fa-directions"></i> 開啟 Google 地圖導航
@@ -287,70 +271,7 @@
         </div>
     </section>
 
-    <!-- 互動遊戲區 (Interactive Mini Game & Quiz) -->
-    <section id="game" class="py-20 px-4 bg-gradient-to-b from-gold-50/30 to-blush-50/50">
-        <div class="max-w-3xl mx-auto text-center space-y-8">
-            <div class="space-y-2">
-                <h2 class="font-cormorant text-4xl sm:text-5xl text-gold-600">Wedding Mini-Game</h2>
-                <p class="text-xs sm:text-sm text-gray-500 tracking-widest">幸福互動問答 & 接心小遊戲</p>
-            </div>
-
-            <!-- 分頁切換鈕 -->
-            <div class="flex justify-center gap-4">
-                <button id="btnTabQuiz" onclick="switchGameTab('quiz')" class="px-6 py-2.5 rounded-full text-sm font-medium transition bg-gold-600 text-white shadow-md">
-                    <i class="fas fa-question-circle mr-1"></i> 愛情默契問答
-                </button>
-                <button id="btnTabCatch" onclick="switchGameTab('catch')" class="px-6 py-2.5 rounded-full text-sm font-medium transition bg-white text-warmdark border border-gold-300 hover:bg-gold-50">
-                    <i class="fas fa-heart mr-1"></i> 接住幸福心 (小遊戲)
-                </button>
-            </div>
-
-            <!-- 遊戲區 1: 愛情問答 (Love Quiz) -->
-            <div id="quizContainer" class="bg-white p-6 sm:p-8 rounded-3xl shadow-xl border border-gold-200 text-left space-y-6">
-                <div id="quizContent">
-                    <div class="flex justify-between items-center mb-4">
-                        <span id="quizProgress" class="text-xs font-bold text-gold-600 tracking-widest uppercase">Question 1 / 3</span>
-                        <span id="quizScore" class="text-xs font-semibold bg-gold-100 text-gold-700 px-3 py-1 rounded-full">Score: 0</span>
-                    </div>
-                    <h3 id="quizQuestion" class="text-lg sm:text-xl font-bold text-warmdark mb-6">題目載入中...</h3>
-                    <div id="quizOptions" class="space-y-3">
-                        <!-- 動態產生選項 -->
-                    </div>
-                </div>
-                <div id="quizResult" class="hidden text-center space-y-4 py-8">
-                    <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto text-gold-600 text-3xl">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-warmdark">挑戰完成！</h3>
-                    <p id="quizFinalText" class="text-gray-600">你非常了解 Edwin & Grace 呢！</p>
-                    <button onclick="resetQuiz()" class="bg-gold-600 text-white px-6 py-2.5 rounded-xl text-sm font-medium hover:bg-gold-700 transition">再測一次</button>
-                </div>
-            </div>
-
-            <!-- 遊戲區 2: Catch The Love Game (Canvas 網頁小遊戲) -->
-            <div id="catchContainer" class="hidden bg-white p-4 sm:p-6 rounded-3xl shadow-xl border border-gold-200 text-center space-y-4">
-                <div class="flex justify-between items-center px-2">
-                    <span class="text-xs text-gray-500">左右移動籃子接住愛心 ❤️</span>
-                    <span class="text-sm font-bold text-gold-600">得分: <span id="gameScore">0</span></span>
-                </div>
-                
-                <div class="relative w-full overflow-hidden rounded-2xl bg-gradient-to-b from-blush-50 to-gold-50 border border-gold-200">
-                    <canvas id="gameCanvas" width="400" height="300" class="w-full h-[300px] block touch-none"></canvas>
-                    
-                    <!-- 遊戲開始/重來蓋層 -->
-                    <div id="gameOverlay" class="absolute inset-0 bg-black/40 backdrop-blur-xs flex flex-col items-center justify-center text-white p-4">
-                        <h4 class="text-xl font-bold mb-2">幸福愛心接接樂</h4>
-                        <p class="text-xs text-gray-200 mb-4">滑動滑鼠或手指控制下方籃子</p>
-                        <button onclick="startGame()" class="bg-gold-500 hover:bg-gold-600 text-white px-6 py-2.5 rounded-xl text-sm font-medium shadow-lg transition">
-                            開始遊戲
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- RSVP 與祝福留言區 (RSVP & Blessings) -->
+    <!-- RSVP 與祝福留言區 -->
     <section id="rsvp" class="py-20 px-4 bg-white">
         <div class="max-w-3xl mx-auto space-y-10 text-center">
             <div class="space-y-2">
@@ -358,36 +279,32 @@
                 <p class="text-xs sm:text-sm text-gray-500 tracking-widest">出席線上回覆與幸福留言</p>
             </div>
 
-            <!-- RSVP 表單 -->
             <form id="rsvpForm" onsubmit="handleRSVP(event)" class="bg-gold-50/50 p-6 sm:p-8 rounded-3xl border border-gold-200 shadow-sm space-y-6 text-left">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">您的姓名 *</label>
-                        <input type="text" required placeholder="請輸入姓名" class="w-full px-4 py-3 rounded-xl border border-gold-200 focus:outline-none focus:border-gold-500 bg-white text-sm">
+                        <input type="text" id="rsvpName" required placeholder="請輸入姓名" class="w-full px-4 py-3 rounded-xl border border-gold-200 focus:outline-none focus:border-gold-500 bg-white text-sm">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">出席人數 *</label>
-                        <select required class="w-full px-4 py-3 rounded-xl border border-gold-200 focus:outline-none focus:border-gold-500 bg-white text-sm">
-                            <option value="1">1 位出席</option>
-                            <option value="2">2 位出席</option>
-                            <option value="3">3 位出席</option>
-                            <option value="4">4 位出席以上</option>
-                            <option value="0">無法出席，獻上祝福</option>
+                        <select id="rsvpCount" required class="w-full px-4 py-3 rounded-xl border border-gold-200 focus:outline-none focus:border-gold-500 bg-white text-sm">
+                            <option value="1 位出席">1 位出席</option>
+                            <option value="2 位出席">2 位出席</option>
+                            <option value="3 位出席">3 位出席</option>
+                            <option value="4 位出席以上">4 位出席以上</option>
+                            <option value="無法出席">無法出席，獻上祝福</option>
                         </select>
                     </div>
                 </div>
-
                 <div>
                     <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">給新人的溫馨祝福 *</label>
-                    <textarea required rows="3" placeholder="留下您想對 Edwin & Grace 說的話..." class="w-full px-4 py-3 rounded-xl border border-gold-200 focus:outline-none focus:border-gold-500 bg-white text-sm"></textarea>
+                    <textarea id="rsvpMsg" required rows="3" placeholder="留下您想對 Edwin & Grace 說的話..." class="w-full px-4 py-3 rounded-xl border border-gold-200 focus:outline-none focus:border-gold-500 bg-white text-sm"></textarea>
                 </div>
-
                 <button type="submit" class="w-full bg-gold-600 hover:bg-gold-700 text-white font-medium py-3 rounded-xl shadow-md transition tracking-widest text-sm">
                     送出回覆與祝福
                 </button>
             </form>
 
-            <!-- 祝福留言牆 -->
             <div class="space-y-4">
                 <h3 class="font-cormorant text-2xl font-bold text-warmdark">Blessing Wall / 親友祝福牆</h3>
                 <div id="blessingsList" class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
@@ -410,18 +327,18 @@
         </div>
     </section>
 
-    <!-- 頁尾結語區 (Footer) -->
+    <!-- 頁尾結語 -->
     <footer class="py-12 bg-warmdark text-white text-center space-y-4">
         <div class="max-w-2xl mx-auto px-4 space-y-3">
             <h3 class="font-cormorant text-3xl text-gold-300">Edwin &amp; Grace</h3>
             <p class="text-xs sm:text-sm text-gray-300 italic">
-                「致最親愛的家人和朋友們，感謝你們百忙之中來參加我們的婚禮，有您的見證和祝福，這一刻更加溫馨。Thank You!」
+                「致最親愛的家人和朋友們，感謝你們百忙之中來參加我們的婚禮，有您的見證和祝福，這一刻更加溫馨。Thank you![cite: 6]」
             </p>
             <p class="text-xs text-gold-400 pt-4">© 2026 Edwin & Grace Wedding. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- 相片燈箱視窗 (Lightbox Modal) -->
+    <!-- 相片燈箱視窗 (Lightbox) -->
     <div id="lightbox" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4">
         <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl hover:text-gold-300 transition z-10">
             <i class="fas fa-times"></i>
@@ -429,33 +346,32 @@
         <img id="lightboxImg" src="" alt="Lightbox View" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl">
     </div>
 
-    <!-- 音樂元素 (Web Audio API / HTML5 Audio) -->
+    <!-- 背景音樂音訊來源 -->
     <audio id="bgMusic" loop preload="auto">
-        <!-- 採用浪漫且公有領域/開放許可授權之輕音樂曲目作為預設背景音樂 -->
         <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=wedding-march-piano-113220.mp3" type="audio/mpeg">
     </audio>
 
     <!-- JavaScript 邏輯控制 -->
     <script>
-        // 1. 照片資料庫 (合成 SVG 高畫質佔位圖，維持與PDF相同的溫馨婚紗調性)
+        // 燈箱與輪播的照片資料清單 (您可以直接修改這裡的網址來換成您自己的照片)
         const photoGallery = [
             {
-                url: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='1000' viewBox='0 0 800 1000'><rect width='800' height='1000' fill='%23f5f0db'/><circle cx='400' cy='400' r='250' fill='%23e3d2a0' opacity='0.5'/><text x='50%' y='45%' font-family='Noto Serif TC, serif' font-size='36' fill='%23b08843' text-anchor='middle' font-weight='bold'>Edwin %26 Grace</text><text x='50%' y='52%' font-family='Noto Serif TC, serif' font-size='22' fill='%238e6930' text-anchor='middle'>「當收到喜帖時，我們的婚禮已開始倒數啦」</text><text x='50%' y='80%' font-family='sans-serif' font-size='16' fill='%23c5a059' text-anchor='middle'>[ 點擊放大查看婚紗照片 ]</text></svg>",
+                url: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80",
                 caption: "You're Invited! Edwin & Grace 的幸福時刻"
             },
             {
-                url: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='1000' viewBox='0 0 800 1000'><rect width='800' height='1000' fill='%23fdf8f8'/><rect x='50' y='50' width='700' height='900' fill='%23f4dcd9' rx='20'/><text x='50%' y='45%' font-family='Noto Serif TC, serif' font-size='32' fill='%23c98a85' text-anchor='middle' font-weight='bold'>走過風雨 經歷歲月</text><text x='50%' y='52%' font-family='Noto Serif TC, serif' font-size='20' fill='%232c2623' text-anchor='middle'>我們的愛情依舊堅定而溫暖</text></svg>",
-                caption: "堅定而溫暖的幸福陪伴"
+                url: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1000&q=80",
+                caption: "走過風雨、經歷歲月，我們的愛情依舊堅定而溫暖"
             },
             {
-                url: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='1000' viewBox='0 0 800 1000'><rect width='800' height='1000' fill='%23fbf9f1'/><path d='M400,300 C400,200 550,200 550,350 C550,500 400,600 400,600 C400,600 250,500 250,350 C250,200 400,200 400,300 Z' fill='%23e8bebb' opacity='0.6'/><text x='50%' y='70%' font-family='Cormorant Garamond, serif' font-size='40' fill='%23b08843' text-anchor='middle'>Welcome to Our Wedding</text></svg>",
+                url: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80",
                 caption: "在這片幸福的天空下，我們結合彼此的心"
             }
         ];
 
         let currentSlide = 0;
 
-        // 2. 音樂控制邏輯
+        // 音樂控制
         const audio = document.getElementById('bgMusic');
         const musicBtn = document.getElementById('musicToggleBtn');
         const musicIcon = document.getElementById('musicIcon');
@@ -472,22 +388,21 @@
                 audio.play().then(() => {
                     musicIcon.classList.add('fa-spin');
                     isPlaying = true;
-                }).catch(e => console.log("Audio play deferred:", e));
+                }).catch(e => console.log("Audio deferred:", e));
             }
         }
 
         musicBtn.addEventListener('click', toggleMusic);
-
         startAudioBtn.addEventListener('click', () => {
             overlay.classList.add('opacity-0');
             setTimeout(() => overlay.remove(), 500);
             toggleMusic();
         });
 
-        // 3. 首頁相片初始化
+        // 初始化主封面圖片
         document.getElementById('heroImage').src = photoGallery[0].url;
 
-        // 4. 輪播控制邏輯
+        // 輪播初始化
         function initCarousel() {
             const dotsContainer = document.getElementById('carouselDots');
             dotsContainer.innerHTML = '';
@@ -506,7 +421,6 @@
             img.src = photoGallery[currentSlide].url;
             caption.innerText = photoGallery[currentSlide].caption;
             
-            // 更新指示點
             const dots = document.getElementById('carouselDots').children;
             Array.from(dots).forEach((dot, idx) => {
                 dot.className = `w-2.5 h-2.5 rounded-full transition ${idx === currentSlide ? 'bg-gold-600 w-6' : 'bg-gold-200'}`;
@@ -528,7 +442,7 @@
             updateSlide();
         }
 
-        // 5. 燈箱 Zoom 邏輯
+        // 燈箱控制 (點擊放大圖片)
         function openLightbox(idx) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightboxImg');
@@ -544,9 +458,8 @@
             document.getElementById('lightbox').classList.add('hidden');
         }
 
-        // 6. 倒數計時器 Logic (婚禮時間: 2026.11.14 18:00)
+        // 倒數計時器 (目標: 2026-11-14 18:00)
         const weddingTime = new Date('2026-11-14T18:00:00').getTime();
-
         function updateCountdown() {
             const now = new Date().getTime();
             const diff = weddingTime - now;
@@ -556,217 +469,39 @@
                 return;
             }
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById('days').innerText = String(days).padStart(2, '0');
-            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            document.getElementById('days').innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+            document.getElementById('hours').innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
         }
-
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 7. 遊戲選項切換邏輯
-        function switchGameTab(tab) {
-            const quizContainer = document.getElementById('quizContainer');
-            const catchContainer = document.getElementById('catchContainer');
-            const btnQuiz = document.getElementById('btnTabQuiz');
-            const btnCatch = document.getElementById('btnTabCatch');
-
-            if (tab === 'quiz') {
-                quizContainer.classList.remove('hidden');
-                catchContainer.classList.add('hidden');
-                btnQuiz.className = "px-6 py-2.5 rounded-full text-sm font-medium transition bg-gold-600 text-white shadow-md";
-                btnCatch.className = "px-6 py-2.5 rounded-full text-sm font-medium transition bg-white text-warmdark border border-gold-300 hover:bg-gold-50";
-            } else {
-                quizContainer.classList.add('hidden');
-                catchContainer.classList.remove('hidden');
-                btnCatch.className = "px-6 py-2.5 rounded-full text-sm font-medium transition bg-gold-600 text-white shadow-md";
-                btnQuiz.className = "px-6 py-2.5 rounded-full text-sm font-medium transition bg-white text-warmdark border border-gold-300 hover:bg-gold-50";
-                initCanvasGame();
-            }
-        }
-
-        // 8. 愛情問答 Quiz Logic
-        const quizData = [
-            {
-                q: "1. 新郎 Edwin 與新娘 奇奇 的婚禮舉辦日期是？",
-                options: ["2026年10月10日", "2026年11月14日", "2026年12月25日"],
-                ans: 1
-            },
-            {
-                q: "2. 婚禮的舉辦地點在哪裡？",
-                options: ["福容大飯店 桃園機場捷運A8店", "台北文華東方酒店", "高雄漢來大飯店"],
-                ans: 0
-            },
-            {
-                q: "3. 喜帖文案中提到，這兩個人平時最常一起做什麼事？",
-                options: ["一起攀岩、馬拉松", "每天一起吃飯、耍廢、吵架", "一起研究高科技程式碼"],
-                ans: 1
-            }
-        ];
-
-        let currentQuizIdx = 0;
-        let score = 0;
-
-        function renderQuiz() {
-            if (currentQuizIdx >= quizData.length) {
-                document.getElementById('quizContent').classList.add('hidden');
-                document.getElementById('quizResult').classList.remove('hidden');
-                document.getElementById('quizFinalText').innerText = `您答對了 ${score} / ${quizData.length} 題！期待婚禮現場與您相見！`;
-                return;
-            }
-
-            const data = quizData[currentQuizIdx];
-            document.getElementById('quizProgress').innerText = `Question ${currentQuizIdx + 1} / ${quizData.length}`;
-            document.getElementById('quizScore').innerText = `Score: ${score}`;
-            document.getElementById('quizQuestion').innerText = data.q;
-
-            const optsDiv = document.getElementById('quizOptions');
-            optsDiv.innerHTML = '';
-            data.options.forEach((opt, idx) => {
-                const btn = document.createElement('button');
-                btn.className = "w-full text-left p-4 rounded-xl border border-gold-200 hover:bg-gold-50 hover:border-gold-400 transition text-sm text-warmdark font-medium flex justify-between items-center";
-                btn.innerHTML = `<span>${opt}</span> <i class="fas fa-chevron-right text-xs text-gold-400"></i>`;
-                btn.onclick = () => answerQuiz(idx);
-                optsDiv.appendChild(btn);
-            });
-        }
-
-        function answerQuiz(selected) {
-            if (selected === quizData[currentQuizIdx].ans) {
-                score++;
-            }
-            currentQuizIdx++;
-            renderQuiz();
-        }
-
-        function resetQuiz() {
-            currentQuizIdx = 0;
-            score = 0;
-            document.getElementById('quizContent').classList.remove('hidden');
-            document.getElementById('quizResult').classList.add('hidden');
-            renderQuiz();
-        }
-
-        // 9. Canvas 接心小遊戲 Logic
-        let canvas, ctx;
-        let basketX = 170;
-        const basketWidth = 60;
-        let hearts = [];
-        let gameScore = 0;
-        let gameActive = false;
-        let animationFrame;
-
-        function initCanvasGame() {
-            canvas = document.getElementById('gameCanvas');
-            ctx = canvas.getContext('2d');
-
-            // 監聽 Touch / Mouse 移動
-            canvas.addEventListener('mousemove', (e) => {
-                const rect = canvas.getBoundingClientRect();
-                basketX = e.clientX - rect.left - basketWidth / 2;
-            });
-            canvas.addEventListener('touchmove', (e) => {
-                const rect = canvas.getBoundingClientRect();
-                if (e.touches.length > 0) {
-                    basketX = e.touches[0].clientX - rect.left - basketWidth / 2;
-                }
-            });
-        }
-
-        function startGame() {
-            document.getElementById('gameOverlay').classList.add('hidden');
-            gameScore = 0;
-            hearts = [];
-            gameActive = true;
-            document.getElementById('gameScore').innerText = gameScore;
-            gameLoop();
-        }
-
-        function gameLoop() {
-            if (!gameActive) return;
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // 限制籃子範圍
-            if (basketX < 0) basketX = 0;
-            if (basketX > canvas.width - basketWidth) basketX = canvas.width - basketWidth;
-
-            // 畫籃子
-            ctx.fillStyle = '#c5a059';
-            ctx.beginPath();
-            ctx.roundRect(basketX, canvas.height - 25, basketWidth, 15, 8);
-            ctx.fill();
-
-            // 生成心形
-            if (Math.random() < 0.04) {
-                hearts.push({
-                    x: Math.random() * (canvas.width - 20) + 10,
-                    y: 0,
-                    speed: 2 + Math.random() * 2
-                });
-            }
-
-            // 更新並繪製心形
-            for (let i = hearts.length - 1; i >= 0; i--) {
-                const h = hearts[i];
-                h.y += h.speed;
-
-                // 畫心形 Emoji
-                ctx.font = "18px serif";
-                ctx.fillText("❤️", h.x, h.y);
-
-                // 碰撞檢測
-                if (h.y >= canvas.height - 30 && h.y <= canvas.height - 10 && h.x >= basketX - 10 && h.x <= basketX + basketWidth) {
-                    gameScore += 10;
-                    document.getElementById('gameScore').innerText = gameScore;
-                    hearts.splice(i, 1);
-                    continue;
-                }
-
-                // 超出邊界
-                if (h.y > canvas.height) {
-                    hearts.splice(i, 1);
-                }
-            }
-
-            animationFrame = requestAnimationFrame(gameLoop);
-        }
-
-        // 10. RSVP 表單提交處理
+        // RSVP 表單送出
         function handleRSVP(e) {
             e.preventDefault();
-            const form = e.target;
-            const name = form.elements[0].value;
-            const count = form.elements[1].value;
-            const message = form.elements[2].value;
+            const name = document.getElementById('rsvpName').value;
+            const count = document.getElementById('rsvpCount').value;
+            const msg = document.getElementById('rsvpMsg').value;
 
-            // 新增至留言牆
             const list = document.getElementById('blessingsList');
-            const card = document.createElement('div');
-            card.className = "p-4 bg-blush-50 rounded-2xl border border-blush-200 space-y-2 animate-fade-in";
-            card.innerHTML = `
+            const newCard = document.createElement('div');
+            newCard.className = "p-4 bg-gold-50 rounded-2xl border border-gold-200 space-y-2 animate-pulse";
+            newCard.innerHTML = `
                 <div class="flex justify-between items-center">
-                    <span class="font-bold text-warmdark text-sm">${name} (${count}位)</span>
+                    <span class="font-bold text-warmdark text-sm">${name} (${count})</span>
                     <span class="text-xs text-gold-600">剛剛</span>
                 </div>
-                <p class="text-xs sm:text-sm text-gray-600">${message}</p>
+                <p class="text-xs sm:text-sm text-gray-600">${msg}</p>
             `;
-            list.prepend(card);
-
-            alert('感謝您的回覆與祝福！我們已收到您的資訊。');
-            form.reset();
+            list.prepend(newCard);
+            alert("感謝您的回覆與祝福！已成功送出！");
+            document.getElementById('rsvpForm').reset();
         }
 
-        // 頁面加載完成初始化
-        window.onload = function() {
+        // 頁面載入初始化
+        window.onload = () => {
             initCarousel();
-            renderQuiz();
         };
     </script>
 </body>
